@@ -91,7 +91,8 @@ cd scripts/linux && make argocd-port-forward
 - 📋 [Documentação da Fase 1](docs/FASE-1-INFRAESTRUTURA.md)
 
 ## 📊 Arquitetura
-[Diagrama será adicionado aqui]
+[------------]apt install make -y
+
 
 ---
 **Desenvolvido por**: Juninho  

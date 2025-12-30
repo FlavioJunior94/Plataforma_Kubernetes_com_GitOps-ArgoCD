@@ -1,0 +1,55 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.temp
+.cache/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos de configuração local
+.env
+.env.local
+config.local.*
+
+# Arquivos de build
+build/
+dist/
+target/
+
+# Dependências
+node_modules/
+vendor/
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Arquivos pessoais e anotações
+anotacoes.txt
+note.txt
+
+# Arquivos de certificados e chaves
+*.pem
+*.key
+*.crt
+*.p12
+
+# Arquivos de estado do Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Arquivos de configuração do Kubernetes local
+kubeconfig
+*.kubeconfig
