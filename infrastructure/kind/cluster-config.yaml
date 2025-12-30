@@ -1,0 +1,53 @@
+# Configuração do cluster Kind para GitOps
+# Este arquivo define um cluster Kubernetes local com:
+# - 1 nó control-plane (master)
+# - 2 nós worker (para simular ambiente real)
+# - Port mapping para Ingress Controller (80 e 443)
+# - Configurações de rede para acesso externo
+
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: gitops-cluster
+
+# Configuração dos nós do cluster
+nodes:
+  # Nó Control Plane (Master)
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+    extraPortMappings:
+      # Porta 80 para HTTP (Ingress)
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      # Porta 443 para HTTPS (Ingress)
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+      # Porta 8080 para ArgoCD (opcional, para acesso direto)
+      - containerPort: 30080
+        hostPort: 8080
+        protocol: TCP
+
+  # Nó Worker 1
+  - role: worker
+    labels:
+      environment: staging
+      
+  # Nó Worker 2  
+  - role: worker
+    labels:
+      environment: production
+
+# Configurações de rede
+networking:
+  # Desabilita o proxy padrão do Kind para usar nosso próprio Ingress
+  disableDefaultCNI: false
+  # Range de IPs para os pods
+  podSubnet: "10.244.0.0/16"
+  # Range de IPs para os serviços
+  serviceSubnet: "10.96.0.0/16"

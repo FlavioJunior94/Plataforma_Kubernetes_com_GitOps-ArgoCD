@@ -1,0 +1,94 @@
+# Configuração personalizada do ArgoCD
+# Este arquivo contém configurações adicionais para o ArgoCD
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  # URL do servidor ArgoCD (será usado pelo CLI e UI)
+  url: https://localhost:8080
+  
+  # Configurações de repositórios Git
+  repositories: |
+    - type: git
+      url: https://github.com/seu-usuario/gitops-manifests
+      name: gitops-manifests
+    - type: helm
+      url: https://charts.bitnami.com/bitnami
+      name: bitnami
+      
+  # Configurações de aplicação
+  application.instanceLabelKey: argocd.argoproj.io/instance
+  
+  # Configurações de servidor
+  server.insecure: "true"  # Para desenvolvimento local
+  server.grpc.web: "true"
+  
+  # Configurações de timeout
+  timeout.hard.reconciliation: 0
+  timeout.reconciliation: 180s
+  
+  # Configurações de UI
+  ui.bannercontent: "🚀 GitOps Demo - Ambiente de Desenvolvimento"
+  ui.bannerurl: "https://github.com/seu-usuario/gitops-demo"
+  
+---
+# Configuração do servidor ArgoCD
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-server-config
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server-config
+    app.kubernetes.io/part-of: argocd
+data:
+  # Configurações de OIDC (desabilitado para demo)
+  oidc.config: |
+    name: OIDC
+    issuer: https://your-oidc-provider
+    clientId: argocd
+    clientSecret: $oidc.clientSecret
+    requestedScopes: ["openid", "profile", "email", "groups"]
+    
+  # Configurações de RBAC (Role-Based Access Control)
+  policy.default: role:readonly
+  policy.csv: |
+    # Política padrão - usuários têm acesso de leitura
+    p, role:readonly, applications, get, */*, allow
+    p, role:readonly, applications, sync, */*, allow
+    p, role:readonly, repositories, get, *, allow
+    p, role:readonly, clusters, get, *, allow
+    
+    # Admin tem acesso total
+    p, role:admin, applications, *, */*, allow
+    p, role:admin, repositories, *, *, allow
+    p, role:admin, clusters, *, *, allow
+    
+    # Binding do usuário admin
+    g, admin, role:admin
+
+---
+# Service para expor o ArgoCD via NodePort (para desenvolvimento)
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server-nodeport
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server-nodeport
+    app.kubernetes.io/part-of: argocd
+spec:
+  type: NodePort
+  ports:
+    - name: server
+      port: 80
+      targetPort: 8080
+      nodePort: 30080  # Porta que será mapeada no Kind
+  selector:
+    app.kubernetes.io/name: argocd-server
