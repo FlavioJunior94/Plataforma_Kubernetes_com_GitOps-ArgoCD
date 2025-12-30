@@ -94,7 +94,7 @@ Criar e configurar a infraestrutura base do projeto GitOps, incluindo:
 
 ### Passo 2: Criar o Cluster
 ```bash
-make create-cluster
+cd scripts/linux && make create-cluster
 ```
 
 **O que acontece**:
@@ -106,7 +106,7 @@ make create-cluster
 
 ### Passo 3: Instalar ArgoCD
 ```bash
-make install-argocd
+cd scripts/linux && make install-argocd
 ```
 
 **O que acontece**:
@@ -118,7 +118,7 @@ make install-argocd
 
 ### Passo 4: Instalar Ingress Controller
 ```bash
-make install-ingress
+cd scripts/linux && make install-ingress
 ```
 
 **O que acontece**:
@@ -128,7 +128,7 @@ make install-ingress
 
 ### Passo 5: Verificar Status
 ```bash
-make status
+cd scripts/linux && make status
 ```
 
 **O que mostra**:

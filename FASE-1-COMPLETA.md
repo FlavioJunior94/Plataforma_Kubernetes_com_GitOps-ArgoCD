@@ -85,15 +85,23 @@ cd scripts/linux && make setup-complete
 
 ### 3. Verificar Status
 ```bash
-make status
+# Windows
+scripts\windows\setup-complete.bat status
+
+# Linux/macOS (execute de dentro da pasta scripts/linux)
+cd scripts/linux && make status
 ```
 
 ### 4. Acessar ArgoCD
 ```bash
-make argocd-port-forward
+# Windows
+scripts\windows\setup-complete.bat argocd-port-forward
+
+# Linux/macOS (execute de dentro da pasta scripts/linux)
+cd scripts/linux && make argocd-port-forward
 # Acesse: https://localhost:8080
 # Usuário: admin
-# Senha: make argocd-password
+# Senha: cd scripts/linux && make argocd-password
 ```
 
 ## 🎓 Conceitos Demonstrados
@@ -132,10 +140,10 @@ Na **Fase 2**, vamos criar:
 
 ## 🆘 Se Algo Não Funcionar
 
-1. **Execute**: `make clean` para recomeçar
+1. **Execute**: `cd scripts/linux && make clean` para recomeçar
 2. **Verifique**: Se Docker está rodando
 3. **Consulte**: `docs/FASE-1-INFRAESTRUTURA.md` para troubleshooting
-4. **Teste**: `make check-prereqs` para verificar ferramentas
+4. **Teste**: `./scripts/linux/check-prerequisites.sh` para verificar ferramentas
 
 ---
 
