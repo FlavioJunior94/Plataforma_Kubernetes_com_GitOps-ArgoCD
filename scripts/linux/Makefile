@@ -14,7 +14,7 @@ help: ## Mostra esta mensagem de ajuda
 
 create-cluster: ## Cria o cluster Kubernetes com Kind
 	@echo "🚀 Criando cluster Kubernetes com Kind..."
-	kind create cluster --config infrastructure/kind/cluster-config.yaml --name $(CLUSTER_NAME)
+	kind create cluster --config ../../infrastructure/kind/cluster-config.yaml --name $(CLUSTER_NAME)
 	@echo "✅ Cluster criado com sucesso!"
 	kubectl cluster-info --context kind-$(CLUSTER_NAME)
 
@@ -30,7 +30,7 @@ install-argocd: ## Instala e configura o ArgoCD no cluster
 	@echo "⏳ Aguardando ArgoCD ficar pronto..."
 	kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n $(ARGOCD_NAMESPACE)
 	@echo "🔧 Aplicando configurações personalizadas..."
-	kubectl apply -f infrastructure/argocd/argocd-config.yaml
+	kubectl apply -f ../../infrastructure/argocd/argocd-config.yaml
 	@echo "✅ ArgoCD instalado e configurado com sucesso!"
 	@echo "🔑 Para acessar o ArgoCD, execute: make argocd-password"
 
