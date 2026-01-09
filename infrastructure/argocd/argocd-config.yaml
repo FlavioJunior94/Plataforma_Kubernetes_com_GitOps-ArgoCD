@@ -1,5 +1,5 @@
-# Configuração personalizada do ArgoCD
-# Este arquivo contém configurações adicionais para o ArgoCD
+# Configuracão personalizada do ArgoCD
+# Este arquvo contém configuracões adicionais para o ArgoCD
 
 apiVersion: v1
 kind: ConfigMap
@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
 data:
-  # URL do servidor ArgoCD (será usado pelo CLI e UI)
+  # URL do servidor ArgoCD
   url: https://localhost:8080
   
   # Configurações de repositórios Git
@@ -25,8 +25,8 @@ data:
   # Configurações de aplicação
   application.instanceLabelKey: argocd.argoproj.io/instance
   
-  # Configurações de servidor
-  server.insecure: "true"  # Para desenvolvimento local
+  # Configuracões de servidor
+  server.insecure: "true"  # Para dev local
   server.grpc.web: "true"
   
   # Configurações de timeout
@@ -34,7 +34,7 @@ data:
   timeout.reconciliation: 180s
   
   # Configurações de UI
-  ui.bannercontent: "🚀 GitOps Demo - Ambiente de Desenvolvimento"
+  ui.bannercontent: " GitOps Demo - Ambiente de Desenvolvimento"
   ui.bannerurl: "https://github.com/seu-usuario/gitops-demo"
   
 ---
@@ -74,7 +74,7 @@ data:
     g, admin, role:admin
 
 ---
-# Service para expor o ArgoCD via NodePort (para desenvolvimento)
+# Service para expor o ArgoCD via NodePort (para dev)
 apiVersion: v1
 kind: Service
 metadata:

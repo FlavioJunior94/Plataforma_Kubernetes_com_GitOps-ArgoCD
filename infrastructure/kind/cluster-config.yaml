@@ -28,7 +28,7 @@ nodes:
       - containerPort: 443
         hostPort: 443
         protocol: TCP
-      # Porta 8080 para ArgoCD (opcional, para acesso direto)
+      # Porta 8080 para ArgoCD
       - containerPort: 30080
         hostPort: 8080
         protocol: TCP

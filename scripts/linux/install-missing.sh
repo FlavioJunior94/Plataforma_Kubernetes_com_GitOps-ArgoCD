@@ -65,6 +65,6 @@ else
 fi
 
 echo ""
-echo "📋 Próximos passos:"
-echo "   1. Execute: ./check-prerequisites.sh"
-echo "   2. Execute: make setup-complete"
+echo " Próximos passos:"
+echo "   1. Executar: ./check-prerequisites.sh"
+echo "   2. Executar: make setup-complete"

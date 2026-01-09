@@ -15,7 +15,7 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-echo "✅ Executando como root"
+echo " Executando como root"
 
 # Detectar distribuição Linux
 if [ -f /etc/os-release ]; then
@@ -24,7 +24,7 @@ if [ -f /etc/os-release ]; then
     VER=$VERSION_ID
 fi
 
-echo "📋 Sistema detectado: $OS"
+echo " Sistema detectado: $OS"
 
 # Atualizar repositórios
 echo "🔄 Atualizando repositórios..."
@@ -83,9 +83,9 @@ echo ""
 echo "============================================================"
 echo "🎉 Instalação concluída!"
 echo ""
-echo "📋 Próximos passos:"
+echo " Próximos passos:"
 echo "   1. Faça logout e login novamente (para grupo docker)"
 echo "   2. Execute: ./check-prerequisites.sh"
 echo "   3. Execute: make setup-complete"
 echo ""
-echo "💡 Se o Docker não funcionar, execute: sudo systemctl start docker"
+echo " Se o Docker não funcionar, execute: sudo systemctl start docker"

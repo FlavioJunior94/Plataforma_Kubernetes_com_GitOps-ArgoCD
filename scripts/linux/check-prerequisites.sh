@@ -3,7 +3,7 @@
 # Script para verificar pré-requisitos do projeto GitOps
 # Este script verifica se todas as ferramentas necessárias estão instaladas
 
-echo "🔍 Verificando pré-requisitos para o projeto GitOps..."
+echo "...Verificando pré-requisitos para o projeto GitOps..."
 echo "=================================================="
 
 # Função para verificar se um comando existe
@@ -37,7 +37,7 @@ for tool in "${TOOLS[@]}"; do
 done
 
 echo ""
-echo "=================================================="
+echo "=========================================================================================="
 
 # Verificar se Docker está rodando
 if command -v docker &> /dev/null; then
@@ -53,14 +53,14 @@ fi
 # Resultado final
 if [ ${#MISSING_TOOLS[@]} -eq 0 ]; then
     echo ""
-    echo "🎉 Todos os pré-requisitos estão atendidos!"
-    echo "   Você pode executar: make create-cluster"
+    echo "✅✅✅ Todos os pré-requisitos estão atendidos!✅✅✅"
+    echo " executar: make create-cluster"
     exit 0
 else
     echo ""
     echo "⚠️  Ferramentas faltando: ${MISSING_TOOLS[*]}"
     echo ""
-    echo "📋 Instruções de instalação:"
+    echo " Instruções de instalação:"
     echo ""
     
     for tool in "${MISSING_TOOLS[@]}"; do
