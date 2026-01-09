@@ -9,8 +9,15 @@ echo "========================================"
 
 # Verificar se Python está instalado
 if ! command -v python3 &> /dev/null; then
-    echo "❌ Python3 não encontrado. Instale Python 3.11+"
-    exit 1
+    echo "❌ Python3 não encontrado. Instalando..."
+    apt update
+    apt install -y python3 python3-pip python3-venv curl
+fi
+
+# Verificar se pip está disponível
+if ! command -v pip3 &> /dev/null; then
+    echo "❌ pip3 não encontrado. Instalando..."
+    apt install -y python3-pip
 fi
 
 
@@ -21,7 +28,7 @@ pip3 install -r requirements.txt
 
 echo "🧪 Executando testes..."
 cd ../tests
-python3 -m pytest test_app.py -v
+python3 test_app.py
 
 echo "🚀 Iniciando aplicação..."
 cd ../src
