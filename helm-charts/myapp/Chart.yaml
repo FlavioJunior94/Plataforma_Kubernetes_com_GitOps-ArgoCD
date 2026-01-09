@@ -1,0 +1,31 @@
+# Chart.yaml - Metadados do Helm Chart
+# Este arquivo define informações sobre o chart da aplicação GitOps Demo API
+
+apiVersion: v2
+name: gitops-demo-api
+description: Helm Chart para GitOps Demo API - Aplicação Flask para demonstrar GitOps com ArgoCD
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+# Informações do mantenedor
+maintainers:
+  - name: flavio
+    email: flavio@example.com
+
+# Palavras-chave para facilitar busca
+keywords:
+  - gitops
+  - flask
+  - api
+  - demo
+  - argocd
+  - kubernetes
+
+# URL do repositório
+home: https://github.com/seu-usuario/gitops-demo
+sources:
+  - https://github.com/seu-usuario/gitops-demo
+
+# Dependências 
+dependencies: []

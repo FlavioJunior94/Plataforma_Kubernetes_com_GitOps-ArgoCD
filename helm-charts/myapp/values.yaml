@@ -1,0 +1,97 @@
+# values.yaml - Configurações padrão do Helm Chart
+# Este arquivo contém todos os valores configuráveis do chart
+
+# Configurações da aplicação
+app:
+  name: gitops-demo-api
+  version: "1.0.0"
+  environment: development
+
+# Configurações da imagem Docker
+image:
+  repository: gitops-demo-api
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+# Configurações de réplicas
+replicaCount: 1
+
+# Configurações do serviço
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+  name: http
+
+# Configurações do Ingress
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: gitops-demo.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# Configurações de recursos
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# Configurações de health checks
+healthCheck:
+  enabled: true
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 5000
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 5000
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# Configurações de segurança
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+# Configurações de pod
+podAnnotations: {}
+podSecurityContext: {}
+
+# Configurações de node selector
+nodeSelector: {}
+
+# Tolerations
+tolerations: []
+
+# Affinity
+affinity: {}
+
+# Variáveis de ambiente
+env:
+  - name: ENVIRONMENT
+    value: "development"
+  - name: APP_VERSION
+    value: "1.0.0"
+  - name: PORT
+    value: "5000"
+  - name: DEBUG
+    value: "false"

@@ -1,0 +1,19 @@
+# Service template para GitOps Demo API. Este template cria o Service que expõe a aplicação dentro do cluster
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.app.name }}-service
+  labels:
+    app: {{ .Values.app.name }}
+    version: {{ .Values.app.version }}
+    environment: {{ .Values.app.environment }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}
+    protocol: TCP
+    name: {{ .Values.service.name }}
+  selector:
+    app: {{ .Values.app.name }}

@@ -1,0 +1,58 @@
+# values-staging.yaml - Configurações para ambiente de staging
+# Este arquivo sobrescreve valores do values.yaml para o ambiente de staging
+
+# Configurações da aplicação para staging
+app:
+  environment: staging
+
+# Configurações de réplicas para staging
+replicaCount: 2
+
+# Configurações do Ingress para staging
+ingress:
+  enabled: true
+  hosts:
+    - host: gitops-demo-staging.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+# Recursos para staging (um pouco mais que development)
+resources:
+  limits:
+    cpu: 750m
+    memory: 768Mi
+  requests:
+    cpu: 375m
+    memory: 384Mi
+
+# Variáveis de ambiente para staging
+env:
+  - name: ENVIRONMENT
+    value: "staging"
+  - name: APP_VERSION
+    value: "1.0.0"
+  - name: PORT
+    value: "5000"
+  - name: DEBUG
+    value: "false"
+
+# Health checks mais rigorosos para staging
+healthCheck:
+  enabled: true
+  livenessProbe:
+    httpGet:
+      path: /health
+      port: 5000
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 2
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 5000
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 2
