@@ -23,15 +23,20 @@ fi
 
 cd "$(dirname "$0")/src"
 
+echo "📦 Criando ambiente virtual..."
+python3 -m venv venv
+source venv/bin/activate
+
 echo "📦 Instalando dependências..."
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 
 echo "🧪 Executando testes..."
 cd ../tests
-python3 test_app.py
+../src/venv/bin/python test_app.py
 
 echo "🚀 Iniciando aplicação..."
 cd ../src
+source venv/bin/activate
 export FLASK_ENV=development
 export DEBUG=true
 python3 app.py &
