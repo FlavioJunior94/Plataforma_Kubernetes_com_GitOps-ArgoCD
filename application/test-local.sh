@@ -11,13 +11,13 @@ echo "========================================"
 if ! command -v python3 &> /dev/null; then
     echo "❌ Python3 não encontrado. Instalando..."
     apt update
-    apt install -y python3 python3-pip python3-venv curl
+    apt install -y python3 python3-pip python3-venv python3.12-venv curl
 fi
 
 # Verificar se pip está disponível
 if ! command -v pip3 &> /dev/null; then
     echo "❌ pip3 não encontrado. Instalando..."
-    apt install -y python3-pip
+    apt install -y python3-pip python3-venv python3.12-venv
 fi
 
 
