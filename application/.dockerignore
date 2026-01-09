@@ -1,0 +1,46 @@
+# .dockerignore para otimizar build da imagem Docker
+# Exclui arquivos desnecessários da imagem
+
+# Arquivos de desenvolvimento
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Documentação
+README.md
+*.md
+
+# Git
+.git/
+.gitignore
+
+# Testes (não necessários na imagem de produção)
+tests/
+
+# Arquivos de configuração local
+.env
+.env.local
