@@ -1,7 +1,7 @@
 # Dockerfile multi-stage para GitOps Demo API. Dockerfile cria uma imagem otimizada e segura para produção
 
 # Estágio 1: Build (imagem temporária para instalar dependências)
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 # Instalar dependências do sistema necessárias para build
 RUN apt-get update && apt-get install -y \
