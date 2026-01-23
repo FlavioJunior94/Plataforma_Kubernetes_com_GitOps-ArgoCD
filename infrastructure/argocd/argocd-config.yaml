@@ -34,8 +34,8 @@ data:
   timeout.reconciliation: 180s
   
   # Configurações de UI
-  ui.bannercontent: " GitOps Demo - Ambiente de Desenvolvimento"
-  ui.bannerurl: "https://github.com/seu-usuario/gitops-demo"
+  ui.bannercontent: "GitOps Demo - Ambiente de Desenvolvimento"
+  ui.bannerurl: "https://github.com/FlavioJunior94/Plataforma_Kubernetes_com_GitOps-ArgoCD"
   
 ---
 # Configuração do servidor ArgoCD
