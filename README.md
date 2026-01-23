@@ -89,11 +89,49 @@ cd scripts/linux && make argocd-port-forward
 - 📖 [Guia de Instalação](INSTALLATION.md)
 - 🪟 [Guia para Windows](WINDOWS-GUIDE.md)
 - 📋 [Documentação da Fase 1](docs/FASE-1-INFRAESTRUTURA.md)
+- 🚀 [Documentação da Fase 2](docs/FASE-2-APLICACAO.md)
+- ⚙️ [Documentação da Fase 3](docs/FASE-3-HELM-CHARTS.md)
+- 🔄 [Documentação da Fase 4](docs/FASE-4-GITOPS.md)
+- 🛠️ [Documentação da Fase 5](docs/FASE-5-RECOVERY.md)
 
-## 📊 Arquitetura
-[------------]apt install make -y
+## 📊 Status do Projeto
+
+### ✅ **FASE 1 - INFRAESTRUTURA** (Concluída)
+- ✅ Cluster Kind (3 nós)
+- ✅ ArgoCD instalado e configurado
+- ✅ Nginx Ingress Controller
+- ✅ Scripts de automação (Windows/Linux)
+
+### ✅ **FASE 2 - APLICAÇÃO** (Concluída)
+- ✅ Flask API com 5 endpoints
+- ✅ Dockerfile multi-stage
+- ✅ Health checks para Kubernetes
+- ✅ Testes unitários
+
+### ✅ **FASE 3 - HELM CHARTS** (Concluída)
+- ✅ Chart Helm completo
+- ✅ Templates para Deployment, Service, Ingress
+- ✅ Values.yaml configurado
+- ✅ Suporte a múltiplos ambientes
+
+### ✅ **FASE 4 - GITOPS** (Concluída)
+- ✅ ArgoCD Application criada
+- ✅ Sync automático configurado
+- ✅ Monitoramento contínuo do Git
+- ✅ Deploy via GitOps funcionando
+
+### 🔄 **FASE 5 - RECOVERY & DOCUMENTAÇÃO** (Em andamento)
+- ✅ Script start-gitops.sh
+- ✅ Documentação completa
+- ✅ Anotações de aprendizado
+- 🔄 Testes de recovery pós-reinicialização
+
+### 🎯 **PRÓXIMAS FASES**
+- 🔄 **FASE 6**: CI/CD Pipeline (GitHub Actions)
+- 🔄 **FASE 7**: Monitoramento (Prometheus/Grafana)
+- 🔄 **FASE 8**: Segurança (RBAC, Network Policies)
 
 
 ---
-**Desenvolvido por**: Juninho  
+**Desenvolvido por**: Flavio dos Santos Junior  
 **Objetivo**: Demonstrar habilidades em DevOps, GitOps e Kubernetes
