@@ -63,9 +63,9 @@ if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     debug = os.getenv('DEBUG', 'False').lower() == 'true'
     
-    print(f"🚀 Iniciando GitOps Demo API v{VERSION}")
-    print(f"🌍 Ambiente: {ENVIRONMENT}")
-    print(f"🔧 Debug: {debug}")
-    print(f"📡 Porta: {port}")
+    print(f"Iniciando GitOps Demo API v{VERSION}")
+    print(f"Ambiente: {ENVIRONMENT}")
+    print(f"Debug: {debug}")
+    print(f"Porta: {port}")
     
     app.run(host='0.0.0.0', port=port, debug=debug)
