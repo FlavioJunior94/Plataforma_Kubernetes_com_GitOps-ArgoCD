@@ -23,9 +23,9 @@ keywords:
   - kubernetes
 
 # URL do repositório
-home: https://github.com/seu-usuario/gitops-demo
+home: https://github.com/FlavioJunior94/Plataforma_Kubernetes_com_GitOps-ArgoCD
 sources:
-  - https://github.com/seu-usuario/gitops-demo
+  - https://github.com/FlavioJunior94/Plataforma_Kubernetes_com_GitOps-ArgoCD
 
 # Dependências 
 dependencies: []

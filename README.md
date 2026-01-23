@@ -47,7 +47,7 @@ Implementação de modelo GitOps utilizando ArgoCD para automação total do cic
 └── .github/workflows/      # Pipelines GitHub Actions
 ```
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Docker instalado
