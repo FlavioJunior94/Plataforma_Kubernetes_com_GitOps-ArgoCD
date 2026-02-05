@@ -30,6 +30,10 @@ target/
 # Dependências
 node_modules/
 vendor/
+venv/
+__pycache__/
+*.pyc
+*.pyo
 
 # Arquivos de backup
 *.bak
